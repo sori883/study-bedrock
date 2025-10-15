@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
       credentials
     });
 
-    // エージェントの実行こまんdの
+    // エージェントの実行コマンド
     const command = new InvokeAgentCommand({
       agentId: process.env.BEDROCK_AGENT_ID, // エージェントのID
       agentAliasId: process.env.AGENT_ALIAS_ID, // エージェントエイリアスのID

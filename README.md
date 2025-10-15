@@ -22,6 +22,13 @@ study-bedrock/
 │   └── env.ts               # 環境設定
 ├── frontend/                # Next.js アプリケーション
 │   ├── app/                 # App Router
+│   │   ├── api/
+│   │   │   └── review/
+│   │   │       └── route.ts # Bedrock Agent 呼び出し API エンドポイント
+│   │   ├── page.tsx         # トップページ
+│   │   ├── layout.tsx       # レイアウトコンポーネント
+│   │   ├── form-validation.ts # フォームバリデーション
+│   │   └── globals.css      # グローバルスタイル
 │   ├── public/              # 静的ファイル
 │   └── Dockerfile           # Lambda デプロイ用 Docker イメージ
 └── Prompt/                  # Bedrock Agent プロンプト
