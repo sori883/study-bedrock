@@ -1,0 +1,685 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*!
+The MIT License (MIT)
+Copyright © 2020-Present zenn.dev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+/*!
+  テーマ: Tokyo-night-Dark
+  出典: https://github.com/enkia/tokyo-night-vscode-theme
+  説明: オリジナルのhighlight.jsスタイル
+  作者: (c) Henri Vandersleyen <hvandersleyen@gmail.com>
+  ライセンス: プロジェクトのLICENSEを参照
+  更新日: 2022
+*/
+
+/* ==================== 変数定義 ==================== */
+
+/* Zenn本体のカラーパレット */
+:root {
+  --c-blue-600: #0f83fd;
+  --c-gray-200: #f1f5f9;
+  --c-gray-300: #edf2f7;
+  --c-gray-500: #d6e3ed;
+  --c-gray-700: #8f9faa;
+  --c-gray-800: #65717b;
+
+  /* 目的別カラー変数 */
+  --c-bg-gray-lighter: var(--c-gray-200);
+
+  --c-border-gray: var(--c-gray-500); /* 標準的なボーダー */
+
+  --c-text-gray-darker: var(--c-gray-800);
+  --c-text-link-primary: var(--c-blue-600);
+  --c-contrast: #1a1b26; /* コードブロックの背景色。ハイライトのスタイルに合わせる */
+
+  /* 角丸の値 */
+  --rounded-xs: 4px;
+  --rounded-lg: 14px;
+}
+
+/* ==================== メインスタイル ==================== */
+
+/* ネストしたCSSが長くなりすぎないように短いクラス名を使用 */
+.znc {
+  line-height: 1.9;
+  overflow-wrap: anywhere; /* 要素がはみ出さないように改行させる */
+}
+
+.znc > *:first-child {
+  margin-top: 0;
+}
+
+/* ==================== コンテンツスタイル ==================== */
+
+.znc i,
+.znc cite,
+.znc em {
+  font-style: italic;
+}
+
+.znc strong {
+  font-weight: 700;
+}
+
+.znc .content-link {
+  color: var(--c-text-link-primary);
+}
+
+.znc .content-link:hover {
+  text-decoration: underline;
+}
+
+.znc p + p {
+  margin-top: 1.5em;
+}
+
+.znc ul,
+.znc ol {
+  margin: 1.4rem 0;
+  line-height: 1.7;
+}
+
+.znc ul > li,
+.znc ol > li {
+  margin: 0.4rem 0;
+}
+
+.znc ul ul,
+.znc ul ol,
+.znc ol ul,
+.znc ol ol {
+  margin: 0.2em 0;
+}
+
+.znc ul p,
+.znc ol p {
+  margin: 0;
+}
+
+.znc ul {
+  padding-left: 1.8em;
+}
+
+.znc ul > li {
+  list-style: disc;
+}
+
+.znc ul > li::marker {
+  font-size: 1em;
+}
+
+.znc ol {
+  padding-left: 1.7em;
+}
+
+.znc ol > li {
+  list-style: decimal;
+  padding-left: 0.2em;
+}
+
+.znc ol > li::marker {
+  letter-spacing: -0.05em;
+}
+
+.znc .contains-task-list .task-list-item {
+  list-style: none;
+}
+
+.znc .task-list-item-checkbox {
+  margin-left: -1.5em;
+  font-size: 1em;
+  pointer-events: none;
+}
+
+.znc h1 + p,
+.znc h2 + p,
+.znc h3 + p,
+.znc h4 + p,
+.znc h5 + p,
+.znc h6 + p {
+  margin-top: 0.3em;
+}
+
+.znc h1,
+.znc h2 {
+  margin-top: 2.3em;
+  margin-bottom: 0.5em;
+}
+
+.znc h3,
+.znc h4,
+.znc h5,
+.znc h6 {
+  margin-top: 2.25em;
+  margin-bottom: 0.5em;
+}
+
+.znc h1 {
+  padding-bottom: 0.2em;
+  margin-bottom: 1.1rem;
+  font-size: 1.7em;
+  border-bottom: solid 1px var(--c-border-gray);
+}
+
+.znc h2 {
+  /* padding-bottom: 0.3em;
+     margin-bottom: 1.1rem;
+     font-size: 1.1em;
+     border-bottom: solid 1px var(--c-border-gray); */
+  padding-bottom: 0.2em;
+  margin-bottom: 1.1rem;
+  font-size: 1.7em;
+  border-bottom: solid 1px var(--c-border-gray);
+}
+
+.znc h3 {
+  font-size: 1.3em;
+}
+
+.znc h4 {
+  font-size: 1.1em;
+}
+
+.znc h5 {
+  font-size: 1em;
+}
+
+.znc h6 {
+  font-size: 0.9em;
+}
+
+/* 小さな画面での見出しサイズ調整 */
+@media screen and (max-width: 576px) {
+  .znc h1 {
+    font-size: 1.6em;
+  }
+
+  .znc h2 {
+    font-size: 1.4em;
+  }
+
+  .znc h3 {
+    font-size: 1.2em;
+  }
+
+  .znc h4 {
+    font-size: 1.1em;
+  }
+
+  .znc h5 {
+    font-size: 1em;
+  }
+
+  .znc h6 {
+    font-size: 0.85em;
+  }
+}
+
+.znc hr {
+  border-top: 2px solid var(--c-border-gray);
+  margin: 2.5rem 0;
+}
+
+.znc blockquote {
+  font-size: 0.97em;
+  margin: 1.4rem 0;
+  border-left: solid 3px var(--c-gray-700);
+  padding: 2px 0 2px 0.7em; /* 上下にpaddingをわずかでも設定しておくと、固定ヘッダー対策で見出しにネガティブマージンが指定されたときにも崩れない。参考: https://github.com/zenn-dev/zenn-roadmap/issues/191 */
+  color: var(--c-text-gray-darker);
+}
+
+.znc blockquote p {
+  margin: 1rem 0;
+}
+
+.znc blockquote > :first-child {
+  margin-top: 0;
+}
+
+.znc blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.znc blockquote.twitter-tweet {
+  display: none;
+}
+
+.znc table {
+  margin: 1.2rem auto;
+  width: auto;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  line-height: 1.5;
+  word-break: content; /* これがないとレイアウトが崩れる */
+  display: block;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.znc th,
+.znc td {
+  padding: 0.5rem;
+  border: solid 3px #2d2c38;
+  background: #22202f;
+  color: #d4d3de;
+}
+
+.znc th {
+  font-weight: 700;
+  background: var(--c-contrast);
+  border: solid 3px #2d2c38;
+  color: #d4d3de;
+}
+
+.znc code {
+  padding: 0.2em 0.4em;
+  background: rgba(33, 90, 160, 0.07); /* var(--c-contrast) と同じ色 */
+  font-size: 0.85em;
+  border-radius: var(--rounded-xs);
+  vertical-align: 0.08em;
+}
+
+.znc code,
+.znc .code-block-filename {
+  font-family:
+    "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-font-smoothing: antialiased;
+}
+
+.znc pre {
+  margin: 1.3rem 0;
+  background: var(--c-contrast);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--rounded-xs);
+  word-break: content; /* iOSで折り返されるのを防ぐ */
+  word-wrap: content; /* iOSで折り返されるのを防ぐ */
+  /* flex + codeの隣に疑似要素を配置することで横スクロール時の右端の余白を作る */
+  display: flex;
+}
+
+.znc pre:after {
+  content: "";
+  width: 8px;
+  flex-shrink: 0;
+}
+
+.znc pre code {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 0.9em;
+  color: #fff;
+}
+
+.znc pre > code {
+  display: block;
+  padding: 1.1rem; /* このようにしないとpreのスクロールバーがコードに重なってしまう */
+}
+
+/* 小さな画面でのコードブロック調整 */
+@media screen and (max-width: 576px) {
+  .znc pre > code {
+    padding: 1rem 0.8rem;
+    font-size: 0.85em;
+  }
+}
+
+.znc .code-block-container {
+  position: relative;
+  margin: 1.3rem 0;
+}
+
+.znc .code-block-container pre {
+  margin: 0;
+}
+
+.znc .code-block-filename {
+  display: table;
+  max-width: 100%;
+  background: #323e52;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  line-height: 1.3;
+  border-radius: var(--rounded-xs) var(--rounded-xs) 0 0;
+  /* コードブロックのファイル名が右端まで達したときに見た目が微妙になるのを防ぐために
+  下側のスペースを大きめに取りネガティブマージンで表示を調整（広めに取ったpaddingぶんだけmarginを下げる）
+  参考: https://github.com/zenn-dev/zenn-editor/issues/236 */
+  padding: 6px 12px 20px;
+  margin-bottom: -16px;
+}
+
+.znc .code-block-filename-container + pre {
+  border-top-left-radius: 0;
+}
+
+.znc .content-img:not(.emoji) {
+  margin: 1.5rem auto;
+  display: table;
+  max-width: 100%;
+  height: auto;
+}
+
+.znc .content-img + br {
+  display: none;
+}
+
+/* 画像とキャプションのスタイル
+![](path_to_image)
+*caption* */
+.znc .content-img ~ em {
+  display: block;
+  margin: -1rem auto 0;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--c-text-gray-darker);
+  font-size: 0.92em;
+}
+
+/* リンクの中に画像がある場合、リンクの範囲を画像の大きさと合わせる */
+.znc a:has(.content-img) {
+  display: table;
+  margin: 0 auto;
+}
+
+.znc details {
+  font-size: 0.95em;
+  margin: 1rem 0;
+  line-height: 1.7;
+}
+
+.znc summary {
+  cursor: pointer;
+  outline: 0;
+  padding: 0.7em 0.7em 0.7em 0.9em;
+  border: solid 1px var(--c-border-gray);
+  color: var(--c-contrast);
+  font-size: 0.9em;
+  border-radius: var(--rounded-lg);
+  background: #fff;
+}
+
+.znc summary::-webkit-details-marker {
+  color: var(--c-text-gray-darker);
+}
+
+.znc details[open] > summary {
+  border-radius: var(--rounded-lg) var(--rounded-lg) 0 0;
+  box-shadow: none;
+  background: var(--c-bg-gray-lighter);
+  border-bottom: none;
+}
+
+.znc .details-content {
+  padding: 0.5em 0.9em;
+  border: solid 1px var(--c-border-gray);
+  border-radius: 0 0 var(--rounded-lg) var(--rounded-lg);
+  background: #fff;
+}
+
+.znc .details-content > * {
+  margin: 0.5em 0;
+}
+
+/* ==================== 埋め込みコンテンツスタイル ==================== */
+
+.znc span.embed-block {
+  /* markdown-it が<p>タグでコンテンツを囲むので、内部で<div>が使えない
+  そのため、<div>を使いたいシーンでは<div>のかわりに<span>で囲み、このCSSでdisplay: block;を指定する
+  参考: https://stackoverflow.com/questions/8397852/why-cant-the-p-tag-contain-a-div-tag-inside-it */
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.znc .embed-slideshare,
+.znc .embed-speakerdeck,
+.znc .embed-codepen,
+.znc .embed-jsfiddle,
+.znc .embed-youtube,
+.znc .embed-stackblitz {
+  padding-bottom: calc(56.25% + 38px);
+  position: relative;
+  width: 100%;
+  height: 0;
+}
+
+.znc .embed-slideshare iframe,
+.znc .embed-speakerdeck iframe,
+.znc .embed-codepen iframe,
+.znc .embed-jsfiddle iframe,
+.znc .embed-youtube iframe,
+.znc .embed-stackblitz iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.znc .embed-slideshare iframe {
+  border: 1px solid var(--c-border-gray);
+}
+
+.znc .embed-jsfiddle iframe {
+  border: 1px solid var(--c-border-gray);
+}
+
+.znc .embed-figma {
+  border: 1px solid var(--c-border-gray);
+}
+
+.znc .zenn-embedded iframe {
+  width: 100%;
+  display: block;
+}
+
+.znc .zenn-embedded-link-card {
+  margin: 1rem auto;
+}
+
+.znc .zenn-embedded-link-card iframe {
+  height: 125px;
+}
+
+.znc .zenn-embedded-tweet,
+.znc .zenn-embedded-mermaid,
+.znc .zenn-embedded-github,
+.znc .zenn-embedded-gist {
+  margin: 1.5rem auto;
+}
+
+.znc embed-katex {
+  /* Issue: https://github.com/zenn-dev/zenn-community/issues/327
+  横に長い要素がはみ出さないようにスクロールバーを有効化する */
+  overflow-x: auto;
+  /* Issue: https://github.com/zenn-dev/zenn-community/issues/608
+  .katex .vlist-t2 に指定されているネガティブマージン（margin-right: -2px）により一部のブラウザでスクロールバーが表示されるため
+  ネガティブマージンを相殺するパディングを親要素に設定する */
+  padding-right: 2px;
+}
+
+/* katexのオーバーフローを防ぐ
+インライン $foo$ 用 */
+.znc embed-katex:not([display-mode="1"]) {
+  display: inline-flex;
+  max-width: 100%;
+  /* Issue: https://github.com/zenn-dev/zenn-editor/pull/216
+  インライン要素ではいかなる場合でもスクロールバーを表示しない */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.znc embed-katex:not([display-mode="1"])::-webkit-scrollbar {
+  display: none;
+}
+
+/* ブロック用
+$$
+foo
+$$ */
+.znc embed-katex[display-mode="1"] {
+  display: block;
+  width: 100%;
+}
+
+/* ==================== シンタックスハイライトスタイル ==================== */
+
+/* コメント */
+.znc .hljs-meta,
+.znc .hljs-comment {
+  color: #565f89;
+}
+
+/* 赤色 */
+/* 情報: キーワード、HTML要素、正規表現グループシンボル、CSS単位、ターミナル赤色 */
+.znc .hljs-tag,
+.znc .hljs-doctag,
+.znc .hljs-selector-id,
+.znc .hljs-selector-class,
+.znc .hljs-regexp,
+.znc .hljs-template-tag,
+.znc .hljs-selector-pseudo,
+.znc .hljs-selector-attr,
+.znc .hljs-variable.language_,
+.znc .hljs-deletion {
+  color: #f7768e;
+}
+
+/* オレンジ色 */
+/* 情報: 数値およびブール定数、言語サポート定数 */
+.znc .hljs-variable,
+.znc .hljs-template-variable,
+.znc .hljs-number,
+.znc .hljs-literal,
+.znc .hljs-type,
+.znc .hljs-params,
+.znc .hljs-link {
+  color: #ff9e64;
+}
+
+/* 黄色 */
+/* 情報: 関数パラメータ、正規表現文字セット、ターミナル黄色 */
+.znc .hljs-built_in,
+.znc .hljs-attribute {
+  color: #e0af68;
+}
+
+/* シアン色 */
+/* 情報: 言語サポート関数、CSS HTML要素 */
+.znc .hljs-selector-tag {
+  color: #2ac3de;
+}
+
+/* ライトブルー */
+/* 情報: オブジェクトプロパティ、正規表現量詞とフラグ、Markdownヘッディング、ターミナルシアン、Markdownコード、インポート/エクスポートキーワード */
+.znc .hljs-keyword,
+.znc .hljs-title.function_,
+.znc .hljs-title,
+.znc .hljs-title.class_,
+.znc .hljs-title.class_.inherited__,
+.znc .hljs-subst,
+.znc .hljs-property {
+  color: #7dcfff;
+}
+
+/* 緑色 */
+/* 情報: オブジェクトリテラルキー、Markdownリンク、ターミナル緑色 */
+.znc .hljs-selector-tag {
+  color: #73daca;
+}
+
+/* より緑色 */
+/* 情報: 文字列、CSSクラス名 */
+.znc .hljs-quote,
+.znc .hljs-string,
+.znc .hljs-symbol,
+.znc .hljs-bullet,
+.znc .hljs-addition {
+  color: #9ece6a;
+}
+
+/* 青色 */
+/* 情報: 関数名、CSSプロパティ名、ターミナル青色 */
+.znc .hljs-code,
+.znc .hljs-formula,
+.znc .hljs-section {
+  color: #7aa2f7;
+}
+
+/* マゼンタ色 */
+/* 情報: 制御キーワード、ストレージタイプ、正規表現シンボルと演算子、HTML属性、ターミナルマゼンタ */
+.znc .hljs-name,
+.znc .hljs-keyword,
+.znc .hljs-operator,
+.znc .hljs-keyword,
+.znc .hljs-char.escape_,
+.znc .hljs-attr {
+  color: #bb9af7;
+}
+
+/* 白色 */
+/* 情報: 変数、クラス名、ターミナル白色 */
+.znc .hljs-punctuation {
+  color: #c0caf5;
+}
+
+.znc .hljs {
+  background: #1a1b26;
+  color: #9aa5ce;
+}
+
+.znc .hljs-emphasis {
+  font-style: italic;
+}
+
+.znc .hljs-strong {
+  font-weight: bold;
+}
